@@ -5,7 +5,6 @@ const emps = db.emps;
 const builds = db.builds;
 
 let emp1 = emps.insertOne({
-    clubs: {
         club_name: "ШВЕДЫ",
         date_start: new Date(),
         emps: [{
@@ -17,18 +16,15 @@ let emp1 = emps.insertOne({
                 name: "Футбол",
             },],
             tren: [{
-                nameOne: "Тутиков",
-                secondName: "Федя",
+                nameOne: "Федя",
+                secondName: "Тутиков",
                 sportTren: "Футбол",
                 startDate: new Date(),
                 salary: 75464,
             }],
         }]
-    },
 })
-let emp2 = emps.insertOne(
-    {
-        clubs: {
+let emp2 = emps.insertOne({
             club_name: "ЛИВОН",
             date_start: new Date(),
             emps: [{
@@ -47,12 +43,10 @@ let emp2 = emps.insertOne(
                     salary: 50000,
                 },],
             }]
-        },
     }
 )
 let emp3 = emps.insertOne(
     {
-        clubs: {
             club_name: "ИНДУСТРИЯ",
             date_start: new Date(),
             emps: [{
@@ -64,19 +58,17 @@ let emp3 = emps.insertOne(
                     name: "Лёгкая атлетика",
                 },],
                 tren: [{
-                    nameOne: "Виктов",
-                    secondName: "Никита",
+                    nameOne: "Никита",
+                    secondName: "Виктов",
                     sportTren: "Лёгкая атлетика",
                     startDate: new Date(),
                     salary: 45054,
                 },],
             }]
-        },
     }
 )
 let emp4 = emps.insertOne(
     {
-        clubs: {
             club_name: "САМОКАТ",
             date_start: new Date(),
             emps: [{
@@ -88,19 +80,17 @@ let emp4 = emps.insertOne(
                     name: "Бокс",
                 },],
                 tren: [{
-                    nameOne: "Филосов",
-                    secondName: "Саша",
+                    nameOne: "Саша",
+                    secondName: "Филосов",
                     sportTren: "Бокс",
                     startDate: new Date(),
                     salary: 123423,
                 },],
             }]
-        },
     }
 )
 let emp5 = emps.insertOne(
     {
-        clubs: {
             club_name: "БРИТАНЦЫ",
             date_start: new Date(),
             emps: [{
@@ -122,13 +112,6 @@ let emp5 = emps.insertOne(
                     },],
                 tren: [
                     {
-                        nameOne: "Тишечко",
-                        secondName: "Даня",
-                        sportTren: "Метание ядра",
-                        startDate: new Date(),
-                        salary: 23753,
-                    },
-                    {
                         nameOne: "Вася",
                         secondName: "Ильин",
                         sportTren: "Тяжёлая атлетика",
@@ -136,7 +119,6 @@ let emp5 = emps.insertOne(
                         salary: 50000,
                     }],
             }]
-        }
     }
 )
 

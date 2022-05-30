@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const EmpsSchema = new Schema({
-    clubs: [{
         club_name: {
             type: String,
         },
@@ -45,10 +44,6 @@ const EmpsSchema = new Schema({
                     default: 50000
                 }
             }],
-
         }],
-
-    }],
-
 })
 module.exports = mongoose.model('emps', EmpsSchema)
