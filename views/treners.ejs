@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container">
+    <h1 >
+        Список тренеров
+    </h1>
+    <ul>
+        <% if (trens.length) { %>
+            <% trens.forEach(({nameOne, secondName, startDate, salary}) => { %>
+                <div class="name_container">
+                    <li>
+                        <span><span class="span_style">Фамилия: </span> <%= nameOne %>  </span>
+                        <span><span class="span_style">Имя: </span> <%= secondName %>  </span>
+                        <span><span class="span_style">Дата рождения: </span>  <%= startDate.toLocaleDateString() %> </span>
+                        <span><span class="span_style">Зарплата: </span> <%= salary %> рублей </span>
+                    </li>
+                </div>
+            <% }) %>
+        <% } %>
+    </ul>
+</div>
+</body>
+</html>

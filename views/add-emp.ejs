@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+<%- include('./partials/nav.ejs') %>
+<form id="post-form" method="post" action="/add-emp">
+    <div class="form-info">
+        <label>Клуб
+            <input type="text" name="club_name"/>
+            Дата основания клуба
+            <input type="ISODate" id="start" name="date_start" value="2022-05-05">
+        </label>
+        <label>Фамилия
+            <input type="text" name="lastName"/>
+        </label>
+        <label>Имя
+            <input type="text" name="firstName"/>
+        </label>
+        <label>Спорт
+            <input type="text" name="name"/>
+        </label>
+        <label>Разряд
+            <select name="category" id="">
+                <option value="Третий юношеский спортивный разряд">Третий юношеский спортивный разряд</option>
+                <option value="Второй юношеский спортивный разряд">Второй юношеский спортивный разряд</option>
+                <option value="Первый юношеский спортивный разряд">Первый юношеский спортивный разряд</option>
+                <option value="Третий спортивный разряд">Третий спортивный разряд</option>
+                <option value="Второй спортивный разряд">Второй спортивный разряд</option>
+                <option value="Первый спортивный разряд">Первый спортивный разряд</option>
+                <option value="КМС">КМС</option>
+            </select>
+        </label>
+        <label for="start">Дата рождения</label>
+        <input type="ISODate" id="start" name="startDate" value="2022-05-05">
+        <label>Тренер
+            Имя
+            <input type="text" name="nameOne"/>
+            Фамилия
+            <input type="text" name="secondName"/>
+        </label>
+    </div>
+    <div class="form-button">
+        <input type="submit" value="Отправить"/>
+    </div>
+</form>
+</body>
+</html>

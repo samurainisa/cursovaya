@@ -1,0 +1,21 @@
+{
+  "name": "cursovaya",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0-beta1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.7",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.2",
+    "mongoose-autopopulate": "^0.16.1",
+    "mongoose-deep-populate": "^3.2.0",
+    "morgan": "~1.9.1"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+<%- include('./partials/nav.ejs') %>
+<form id="post-form" method="post" action="/add-treners" style="margin: 5em auto auto auto; max-width: 55%">
+    <div class="form-info">
+        <label>Название статьи
+            <input type="text" name="title" />
+        </label>
+        <label>Автор
+            <input type="text" name="author" />
+        </label>
+        <label>Тег
+            <input type="text" name="tag" />
+        </label>
+    </div>
+    <div class="form-text">
+        <label>Текст статьи
+            <textarea name="text"></textarea>
+        </label>
+    </div>
+    <div class="form-button">
+        <input type="submit" value="Отправить" />
+    </div>
+</form>
+</body>
+</html>

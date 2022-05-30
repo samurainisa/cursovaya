@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container">
+    <h1>
+        Список спортсменов
+    </h1>
+    <ul>
+
+        <% if (sports.length !== 0) { %>
+            <%
+            console.log(sports.length)%>
+            <% for(let u = 0; u < sports.length; u++){ %>
+                <div class="name_container">
+                    <li>
+                        <div class="div_name">
+                            <span>
+                                <span class="span_style">Имя:
+                                </span>
+                                <% for (let i = 0; i < clubs.length; i++) { %>
+                                    <%= clubs[i].emps[i].firstName %>
+                                    <%= clubs[i].emps[i].lastName %>
+                                    <% console.log(clubs.length) %>
+                                <% } %>
+                            </span>
+                            <span></span>
+                        </div>
+                        <div class="div_date">
+                            <span><span class="span_style">Дата рождения: </span>
+                                <% for (let i = 0; i < clubs.length; i++) { %>
+                                    <%= clubs[i].emps[i].startDate.toLocaleDateString() %>
+                                <% } %>
+                            </span>
+                        </div>
+                        <div class="div_club">
+                            <span><span class="span_style">Клуб: </span>
+                                <% for (let i = 0; i < clubs.length; i++) { %>
+                                    <%= clubs[i].emps[i].firstName %>
+                                    <%= clubs[i].emps[i].lastName %>
+                                    <% console.log(clubs.length) %>
+                                <% } %>
+                            </span>
+                        </div>
+                        <div class="div_sport">
+                            <span class="span_style">Виды спорта:</span>
+
+                        </div>
+                    </li>
+                </div>
+            <% } %>
+        <% } %>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container">
+    <h1 >
+        Список Соревнований
+    </h1>
+    <ul>
+        <% if (comps.length) { %>
+            <% comps.forEach(({name, emp, build}) => { %>
+                <div class="name_container">
+                    <li>
+                        <div class="div_name">
+                            <span><span class="span_style">Учебное заведение: </span> <%= name %></span>
+                        </div>
+                        <div class="div_emp">
+                            <span><span class="span_style">Участник: </span> <%= emp.firstName %><span> <%= emp.lastName %></span>  </span>
+                        </div>
+                        <div class="div_build">
+                            <span><span class="span_style">Место проведения: </span> <%= build.name %> </span>
+                        </div>
+                    </li>
+                </div>
+            <% }) %>
+        <% } %>
+    </ul>
+</div>
+</body>
+</html>
