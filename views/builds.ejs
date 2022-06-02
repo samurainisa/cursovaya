@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container">
+    <h1>
+        Список сооружений и соревнований
+    </h1>
+    <ul class="ul-grid__wrapper">
+
+        <% buildss.forEach(({_id, name, cover, buildType, limit, comps}) => { %>
+            <% comps.forEach((comp => { %>
+                <div class="name_container--comps">
+                    <li>
+                        <div class="div_build">
+                            <span><span>ID Участника соревниваний:
+                                </span><a style="font-size:26px; color: brown" class="span_style"
+                                 href="/sports/<%= comp.emp %>"><%= comp.emp %></a></span>
+                        </div>
+                        <div class="div_name">
+                            <span><span class="span_style">ID: </span> <%= _id %></span>
+                        </div>
+                        <div class="div_name">
+                            <span><span class="span_style">Сооружений: </span> <%= name %></span>
+                        </div>
+                        <div class="div_name">
+                            <span><span class="span_style">Тип сооружения: </span> <%= buildType %></span>
+                        </div>
+                        <div class="div_name">
+                            <span><span class="span_style">Тип покрытия: </span> <%= cover %></span>
+                        </div>
+                        <div class="div_build">
+                            <span><span class="span_style">Лимит людей: </span> <%= limit %> </span>
+                        </div>
+                        <div class="div_build">
+                            <span><span class="span_style">Название соревнования:
+                                </span> <%= comp.name %> </span>
+                        </div>
+
+                        <div class="div_build">
+                            <span><span class="span_style">Призовое место спортсмена:</span> <%= comp.winPlace %> </span>
+                        </div>
+                        <div class="div_build">
+                            <span><span class="span_style">Дата проведения соревнований:
+                                </span> <%= comp.startDate.toLocaleDateString() %> </span>
+                        </div>
+                        <div class="div_build">
+                            <span><span class="span_style">Организатор:
+                                    <% comp.orgs.forEach((org => { %>
+                                </span> <%= org.name %> </span>
+                        </div>
+                    </li>
+                </div>
+                <% })) %>
+        <% }))}) %>
+    </ul>
+</div>
+</body>
+</html>

@@ -30,10 +30,41 @@ h1 {
     margin-top: 55px;
 }
 
+.add {
+    cursor: pointer;
+}
+
+.form input {
+    display: block;
+}
+
 .name_container {
     border: #af81b9 4px solid;
     border-radius: 10px;
     margin-bottom: 30px;
+    justify-content: space-evenly;
+    max-width: 30em;
+}
+
+.ul-grid__wrapper {
+    display: grid;
+    grid-template: repeat(2, 50%) / repeat(3, 58vh);
+}
+
+.name_container--comps {
+    border: #af81b9 4px solid;
+    border-radius: 10px;
+    display: grid;
+    max-width: 25em;
+    margin: 20px auto;
+    /*width: -webkit-fill-available;*/
+}
+
+.build-info {
+    justify-content: space-between;
+    gap: 20px;
+    display: grid;
+    padding-left: 25px;
 }
 
 li {
@@ -65,6 +96,7 @@ nav ul {
     justify-content: space-between;
     gap: 20px;
     display: grid;
+    padding-right: 25px;
 }
 
 .form-button {
@@ -74,9 +106,8 @@ nav ul {
 
 .name_container {
     display: flex;
-    max-width: 67%;
+    max-width: 43em;
     margin: 20px auto;
-    justify-content: space-evenly;
 }
 
 .form-button input {
@@ -136,10 +167,6 @@ nav a {
 
 li {
     list-style: none;
-}
-
-ul {
-    padding: 0;
 }
 
 #post-form {

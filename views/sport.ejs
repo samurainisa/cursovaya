@@ -6,21 +6,20 @@
 
 <div class="container">
     <h1>
-        Список спортсменов
+        Данные о спортсмене
     </h1>
     <ul>
-        <% if (sports.length !== 0) { %>
-            <% sports.forEach(({_id, club_name, emps}) => { %>
+        <% if (sportss.length !== 0) { %>
+            <% console.log(sportss) %>
+            <% sportss.forEach(({_id, club_name, emps}) => { %>
                 <div class="name_container">
                     <li>
-                            <a style="color:red;" href="/sports/<%= _id %>"><%= _id %></a>
-                        <p class="title-data">Данные о спортсмене</p>
                         <div class="div_date">
                             <span>
                                 <span class="span_style">
                                     ID:
                                 </span>
-                                            <%= _id %>
+                                              <%= _id %>
                                 </span>
                         </div>
                         <div class="div_name">
@@ -63,13 +62,8 @@
                                 <%= sport.category %>
                             <% })) %>
                         </div>
-                        <div class="wrapper__trash" style="text-align:right">
-                            <button class="btn-delete btn-primary" data-id="<%= _id %>">
-                                <i class="fas fa-trash-alt" data-id="<%= _id %>"></i>
-                            </button>
-                        </div>
                     </li>
-                    <li style=" padding-right: 30px;">
+                    <li style="padding-right: 30px;">
                         <p class="title-data">Данные о тренере</p>
                         <div class="div_trens" style="display: flex;">
                             <span class="span_style">Имя:</span>
@@ -86,7 +80,6 @@
                                 <% emp.tren.forEach((tren => { %>
                                     <%= tren.startDate.toLocaleDateString() %>
                                 <% })) %>
-
                             </span>
                         </div>
                         <div class="div_trens" style="display: flex;">
@@ -106,23 +99,14 @@
                             </span>
                         </div>
                     </li>
+                    <a href="/edit-emp/<%= _id %>" class="btn-edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </div>
                 <% })) %>
             <% }) %>
         <% } %>
     </ul>
 </div>
-<script>
-    document.addEventListener('click', (e) => {
-        const id = e.target?.dataset?.id || null;
-        if (id) {
-            fetch(`/sports/${id}`, {
-                method: 'DELETE',
-            }).then(() => {
-                window.location.reload();
-            });
-        }
-    });
-</script>
 </body>
 </html>

@@ -34,7 +34,7 @@ const EmpsSchema = new Schema({
                     type: String,
                 },
                 sportTren: {
-                    sportName: String
+                    type: String
                 },
                 startDate: {
                     type: Date,

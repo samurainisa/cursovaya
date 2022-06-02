@@ -5,120 +5,120 @@ const emps = db.emps;
 const builds = db.builds;
 
 let emp1 = emps.insertOne({
-        club_name: "ШВЕДЫ",
-        date_start: new Date(),
-        emps: [{
-            firstName: "Веня",
-            lastName: "Димов",
+    club_name: "ШВЕДЫ",
+    date_start: new Date(),
+    emps: [{
+        firstName: "Веня",
+        lastName: "Димов",
+        startDate: new Date(),
+        sport: [{
+            category: "Юношеский",
+            name: "Футбол",
+        },],
+        tren: [{
+            nameOne: "Федя",
+            secondName: "Тутиков",
+            sportTren: "Футбол",
             startDate: new Date(),
-            sport: [{
-                category: "Юношеский",
-                name: "Футбол",
-            },],
-            tren: [{
-                nameOne: "Федя",
-                secondName: "Тутиков",
-                sportTren: "Футбол",
-                startDate: new Date(),
-                salary: 75464,
-            }],
-        }]
+            salary: 75464,
+        }],
+    }]
 })
 let emp2 = emps.insertOne({
-            club_name: "ЛИВОН",
-            date_start: new Date(),
-            emps: [{
-                firstName: "Алексей",
-                lastName: "Петров",
+        club_name: "ЛИВОН",
+        date_start: new Date(),
+        emps: [{
+            firstName: "Алексей",
+            lastName: "Петров",
+            startDate: new Date(),
+            sport: [{
+                category: "Первый юношеский",
+                name: "Тяжёлая атлетика",
+            },],
+            tren: [{
+                nameOne: "Вася",
+                secondName: "Ильин",
+                sportTren: "Тяжёлая атлетика",
                 startDate: new Date(),
-                sport: [{
-                    category: "Первый юношеский",
+                salary: 50000,
+            },],
+        }]
+    }
+)
+let emp3 = emps.insertOne(
+    {
+        club_name: "ИНДУСТРИЯ",
+        date_start: new Date(),
+        emps: [{
+            firstName: "Валерий",
+            lastName: "Жмышенко",
+            startDate: new Date(),
+            sport: [{
+                category: "КМС",
+                name: "Лёгкая атлетика",
+            },],
+            tren: [{
+                nameOne: "Никита",
+                secondName: "Виктов",
+                sportTren: "Лёгкая атлетика",
+                startDate: new Date(),
+                salary: 45054,
+            },],
+        }]
+    }
+)
+let emp4 = emps.insertOne(
+    {
+        club_name: "САМОКАТ",
+        date_start: new Date(),
+        emps: [{
+            firstName: "Витя",
+            lastName: "Александров",
+            startDate: new Date(),
+            sport: [{
+                category: "МС",
+                name: "Бокс",
+            },],
+            tren: [{
+                nameOne: "Саша",
+                secondName: "Филосов",
+                sportTren: "Бокс",
+                startDate: new Date(),
+                salary: 123423,
+            },],
+        }]
+    }
+)
+let emp5 = emps.insertOne(
+    {
+        club_name: "БРИТАНЦЫ",
+        date_start: new Date(),
+        emps: [{
+            firstName: "Саша",
+            lastName: "Повозов",
+            startDate: new Date(),
+            sport: [
+                {
+                    category: "КМС",
+                    name: "Метание ядра",
+                },
+                {
+                    category: "КМС",
                     name: "Тяжёлая атлетика",
+                },
+                {
+                    category: null,
+                    name: "Лёгкая атлетика",
                 },],
-                tren: [{
+            tren: [
+                {
                     nameOne: "Вася",
                     secondName: "Ильин",
                     sportTren: "Тяжёлая атлетика",
                     startDate: new Date(),
                     salary: 50000,
-                },],
-            }]
-    }
-)
-let emp3 = emps.insertOne(
-    {
-            club_name: "ИНДУСТРИЯ",
-            date_start: new Date(),
-            emps: [{
-                firstName: "Валерий",
-                lastName: "Жмышенко",
-                startDate: new Date(),
-                sport: [{
-                    category: "КМС",
-                    name: "Лёгкая атлетика",
-                },],
-                tren: [{
-                    nameOne: "Никита",
-                    secondName: "Виктов",
-                    sportTren: "Лёгкая атлетика",
-                    startDate: new Date(),
-                    salary: 45054,
-                },],
-            }]
-    }
-)
-let emp4 = emps.insertOne(
-    {
-            club_name: "САМОКАТ",
-            date_start: new Date(),
-            emps: [{
-                firstName: "Витя",
-                lastName: "Александров",
-                startDate: new Date(),
-                sport: [{
-                    category: "МС",
-                    name: "Бокс",
-                },],
-                tren: [{
-                    nameOne: "Саша",
-                    secondName: "Филосов",
-                    sportTren: "Бокс",
-                    startDate: new Date(),
-                    salary: 123423,
-                },],
-            }]
-    }
-)
-let emp5 = emps.insertOne(
-    {
-            club_name: "БРИТАНЦЫ",
-            date_start: new Date(),
-            emps: [{
-                firstName: "Саша",
-                lastName: "Повозов",
-                startDate: new Date(),
-                sport: [
-                    {
-                        category: "КМС",
-                        name: "Метание ядра",
-                    },
-                    {
-                        category: "КМС",
-                        name: "Тяжёлая атлетика",
-                    },
-                    {
-                        category: null,
-                        name: "Лёгкая атлетика",
-                    },],
-                tren: [
-                    {
-                        nameOne: "Вася",
-                        secondName: "Ильин",
-                        sportTren: "Тяжёлая атлетика",
-                        startDate: new Date(),
-                        salary: 50000,
-                    }],
-            }]
+                }],
+        }]
     }
 )
 

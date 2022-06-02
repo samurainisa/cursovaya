@@ -24,7 +24,6 @@ const BuildingsSchema = new Schema({
         emp: [{
             ref: 'emps',
             type: mongoose.Schema.Types.ObjectId,
-
         }],
         startDate: {
             type: Date

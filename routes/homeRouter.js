@@ -1,37 +1,18 @@
 const express = require('express');
 const router = express.Router();
-
 const Build = require('../models/Buildings');
 const Emps = require('../models/Emps')
+const {ObjectId} = require("mongodb");
 
 router.get('/', (req, res, next) => {
     const title = "Home"
     res.render('home', {title})
 });
-//просто json в браузере чекнуть
-router.get('/sportss', (req, res, next) => {
-    const title = "Список Спортиков"
-    Emps
-        .aggregate([
-            {
-                $project: {
-                    _id: 1,
-                    "clubs.emps.sport.name": 1,
-                    "clubs.emps.firstName": 1,
-                    "clubs.emps.lastName": 1,
-                    "clubs.emps.startDate": 1,
-                    "clubs.club_name": 1
-                }
-            }
-        ])
-        .then((sports) => res.json(sports));
-})
 
 router.get('/sports', (req, res, next) => {
     const title = "Список Спортиков"
     Emps
         .aggregate([
-            // {$group:{_id: "$clubs.emps."}123},
             {
                 $project: {
                     _id: 1,
@@ -41,7 +22,7 @@ router.get('/sports', (req, res, next) => {
                     "emps.startDate": 1,
                     "emps.sport.category": 1,
                     "club_name": 1,
-                    "emps.tren":1
+                    "emps.tren": 1
                 }
             }
         ])
@@ -54,91 +35,173 @@ router.get("/add-emp", (req, res) => {
 });
 //вставка данных
 router.post("/add-emp", (req, res) => {
-    const {club_name, date_start, firstName, lastName, name, category, startDate, nameOne, secondName} = req.body;
+    const {
+        club_name,
+        date_start,
+        firstName,
+        lastName,
+        sport_name,
+        category,
+        data_roj,
+        nameOne,
+        secondName,
+        trenStartDate,
+        sportTren
+    } = req.body;
+
     const emp = new Emps({
         club_name: club_name,
         date_start: date_start,
         emps: [{
             firstName: firstName,
             lastName: lastName,
-            startDate: startDate,
+            startDate: data_roj,
             sport: [{
                 category: category,
-                name: name
+                name: sport_name
             }],
             tren: [{
                 nameOne: nameOne,
                 secondName: secondName,
+                sportTren: sportTren,
+                startDate: trenStartDate,
             }]
         }]
     });
     emp.save()
-        .then((result) => res.redirect("/sports"))
+    const {
+        name,
+        cover,
+        buildType,
+        startDate,
+        limit,
+        name_comp,
+        winPlace,
+        orgs_name
+    } = req.body;
+
+    const build = new Build({
+        name: name,
+        cover: cover,
+        buildType: buildType,
+        limit: limit,
+        comps: [{
+            name: name_comp,
+            winPlace: winPlace,
+            emp: [
+                emp._id
+            ],
+            startDate: startDate,
+            orgs: [{
+                name: orgs_name,
+            }],
+        }]
+    })
+
+    build.save()
+        .then((result) => res.redirect('/sports'))
         .catch((error) => {
             console.log(error);
             res.render("error", {title: "Error"});
         });
 });
 
-router.delete("/sports/:id", (req, res) => {
-    Emps.findByIdAndDelete(req.params.id)
-        .then((result) => {
-            res.sendStatus(200);
-        })
+
+router.delete("/sports/:id", async (req, res) => {
+    await Emps.findByIdAndDelete(req.params.id)
+    await Build.deleteMany({
+        "comps.emp": ObjectId(req.params.id)
+    })
+        .then(res.sendStatus(200))
+        .catch((error) => {
+            console.log(error);
+            res.render("error", {title: "Error"});
+        });
+});
+
+router.get("/sports/:id", (req, res) => {
+    Emps.aggregate([
+        {$match: {_id: ObjectId(req.params.id)}},
+        {
+            $project: {
+                _id: 1,
+                "emps.sport.name": 1,
+                "emps.firstName": 1,
+                "emps.lastName": 1,
+                "emps.startDate": 1,
+                "emps.sport.category": 1,
+                "club_name": 1,
+                "emps.tren": 1
+            }
+        }
+    ])
+        .then((sportss) => res.render("sport", {sportss}))
+        .catch((error) => {
+            console.log(error);
+            res.render("error", {title: "Error"});
+        });
+});
+
+router.get("/builds", async (req, res) => {
+    const buildss = await Build.aggregate([
+            {
+                $project: {
+                    _id: 1,
+                    "name": 1,
+                    "cover": 1,
+                    "buildType": 1,
+                    "limit": 1,
+                    "comps": 1,
+                }
+            }
+        ]
+    )
+    res.render('builds', {buildss})
+});
+
+router.get("/edit-emp/:id", (req, res) => {
+    const title = "Редактировать";
+    Emps.findById(req.params.id)
+        .then((post) => res.render("edit-post", { post, title }))
         .catch((error) => {
             console.log(error);
             res.render("error", { title: "Error" });
         });
 });
-// 1)СДЕЛАТЬ ДОБАВЛЕНИЕ СОРЕВНОВАНИЙ И ЗДАНИЙ
-// 2)СДЕЛАТЬ УДАЛЕНИЕ СОРЕВНОВАНИЙ И ЗДАНИЙ
-// 3)СДЕЛАТЬ ИЗМЕНЕНИЕ ДАННЫХ
 
-// app.delete("/posts/:id", (req, res) => {
-//     Post.findByIdAndDelete(req.params.id)
-//         .then((result) => {
-//             res.sendStatus(200);
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//             res.render(createPath("error"), { title: "Error" });
-//         });
-// });
+router.put("/edit-emp/:id", (req, res) => {
+    const {
+        club_name,
+        date_start,
+        firstName,
+        lastName,
+        sport_name,
+        category,
+        data_roj,
+        nameOne,
+        secondName,
+        trenStartDate,
+        sportTren
+    } = req.body;
+    const { id } = req.params;
 
-//
-// router.get('/sports', (req, res, next) => {
-//     const title = "Список спортсменов"
-//     Emps
-//         .find()
-//         .then((emps) => res.render('sports', {emps, title}))
-//         .catch((err) => {
-//             console.log(err);
-//             res.render('error', {title})
-//         })
-// })
-//
-// router.get('/comps', (req, res, next) => {
-//     const title = "Список соревнований"
-//     Comps
-//         .find()
-//         .then((comps) => res.render('comps', {comps, title}))
-//         .catch((err) => {
-//             console.log(err);
-//             res.render('error', {title})
-//         })
-// })
-//
-
-
-// router.get("/add-treners", (req, res) => {
-//     const title = "Добавить статью";
-//     res.render("add-treners", {title})
-// });
-//
-// router.get("/add-comps", (req, res) => {
-//     const title = "Добавить статью";
-//     res.render("add-comps", {title})
-// });
-
-
+    Emps.findByIdAndUpdate(id, {
+        club_name,
+        date_start,
+        firstName,
+        lastName,
+        sport_name,
+        category,
+        data_roj,
+        nameOne,
+        secondName,
+        trenStartDate,
+        sportTren
+    })
+        .then((result) => res.redirect(`/sports/${id}`))
+        .catch((error) => {
+            console.log(error);
+            res.render("error", { title: "Error" });
+        });
+});
 module.exports = router;

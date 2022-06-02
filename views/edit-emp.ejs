@@ -4,25 +4,25 @@
 
 <body>
 <%- include('./partials/nav.ejs') %>
-<form id="post-form" method="post" action="/add-treners" style="margin: 5em auto auto auto; max-width: 55%">
+<form id="post-form" method="post" action="/edit-data/<%=  %>?_method=PUT">
     <div class="form-info">
         <label>Название статьи
-            <input type="text" name="title" />
+            <input type="text" name="title" value="<%=  %>" />
         </label>
         <label>Автор
-            <input type="text" name="author" />
+            <input type="text" name="author" value="<%= %>" />
         </label>
         <label>Тег
-            <input type="text" name="tag" />
+            <input type="text" name="tag" value="<%=  %>" />
         </label>
     </div>
     <div class="form-text">
-        <label>Текст статьи
-            <textarea name="text"></textarea>
+        <label>Post Text
+            <textarea name="text"><%=  %></textarea>
         </label>
     </div>
     <div class="form-button">
-        <input type="submit" value="Отправить" />
+        <input type="submit" value="Submit" />
     </div>
 </form>
 </body>
