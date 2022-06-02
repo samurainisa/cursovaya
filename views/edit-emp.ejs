@@ -4,26 +4,61 @@
 
 <body>
 <%- include('./partials/nav.ejs') %>
-<form id="post-form" method="post" action="/edit-data/<%=  %>?_method=PUT">
-    <div class="form-info">
-        <label>Название статьи
-            <input type="text" name="title" value="<%=  %>" />
-        </label>
-        <label>Автор
-            <input type="text" name="author" value="<%= %>" />
-        </label>
-        <label>Тег
-            <input type="text" name="tag" value="<%=  %>" />
-        </label>
-    </div>
-    <div class="form-text">
-        <label>Post Text
-            <textarea name="text"><%=  %></textarea>
-        </label>
-    </div>
-    <div class="form-button">
-        <input type="submit" value="Submit" />
-    </div>
-</form>
+<% sports.forEach(({_id, club_name, emps}) => { %>
+    <% emps.forEach((emp => { %>
+        <% emp.sport.forEach((sport => { %>
+            <% emp.tren.forEach((tren => { %>
+                <form id="post-form" method="POST" action="/edit-emp/<%= _id %>?_method=PUT">
+                    <div class="form-info">
+                        <label>Клуб
+                            <input type="text" name="club_name" value="<%= club_name %>" required>
+                            Дата основания клуба
+                            <input type="Date" id="start" name="date_start" value="2022-05-05" required>
+                        </label>
+                        <label>Фамилия
+                            <input type="text" name="lastName" value="<%= emp.lastName %>" required/>
+                        </label>
+                        <label>Имя
+                            <input type="text" name="firstName" value="<%= emp.firstName %>" required/>
+                        </label>
+                        <label>Спорт
+                            <input type="text" name="sport_name" value="<%= sport.name %>" required/>
+                        </label>
+                        <label>Разряд
+                            <select name="category" id="">
+                                <option value="Третий юношеский спортивный разряд">Третий юношеский спортивный разряд
+                                </option>
+                                <option value="Второй юношеский спортивный разряд">Второй юношеский спортивный разряд
+                                </option>
+                                <option value="Первый юношеский спортивный разряд">Первый юношеский спортивный разряд
+                                </option>
+                                <option value="Третий спортивный разряд">Третий спортивный разряд</option>
+                                <option value="Второй спортивный разряд">Второй спортивный разряд</option>
+                                <option value="Первый спортивный разряд">Первый спортивный разряд</option>
+                                <option value="КМС">КМС</option>
+                            </select>
+                        </label>
+                        <label for="start">Дата рождения</label>
+                        <input type="Date" id="start" name="data_roj" value="2022-05-05" required>
+                        <label>Тренер
+                            Имя
+                            <input type="text" name="nameOne" value="<%= tren.nameOne %>" required/>
+                            Фамилия
+                            <input type="text" name="secondName" value="<%= tren.secondName %>" required/>
+                        </label>
+                        <label for="start">Дата рождения тренера</label>
+                        <input type="Date" id="start" name="trenStartDate" value="2022-05-05" required>
+                        <label>Вид спорта тренера
+                            <input type="text" name="sportTren" value="<%= tren.sportTren %>" required/>
+                        </label>
+                    </div>
+                    <div class="form-button">
+                        <input type="submit" value="Submit"/>
+                    </div>
+                </form>
+            <% })) %>
+        <% })) %>
+    <% })) %>
+<% }) %>
 </body>
 </html>

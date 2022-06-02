@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
+
 <body>
 <%- include('./partials/nav.ejs') %>
 
@@ -13,15 +14,17 @@
             <% sports.forEach(({_id, club_name, emps}) => { %>
                 <div class="name_container">
                     <li>
-                            <a style="color:red;" href="/sports/<%= _id %>"><%= _id %></a>
+                        <a style="color:red;" href="/sports/<%= _id %>">
+                            <%= _id %>
+                        </a>
                         <p class="title-data">Данные о спортсмене</p>
                         <div class="div_date">
-                            <span>
+                    <span>
                                 <span class="span_style">
                                     ID:
                                 </span>
-                                            <%= _id %>
-                                </span>
+                    <%= _id %>
+                      </span>
                         </div>
                         <div class="div_name">
                             <% emps.forEach((emp => { %>
@@ -29,25 +32,25 @@
                                     <span class="span_style">
                                         Имя :
                                     </span>
-                                    <span><%= emp.firstName %></span>
-                                    <span><%= emp.lastName %></span>
-                                </span>
+                      <span><%= emp.firstName %></span>
+                      <span><%= emp.lastName %></span>
+                      </span>
                         </div>
                         <div class="div_date">
-                            <span>
+                    <span>
                                 <span class="span_style">
                                     Дата рождения:
                                 </span>
-                                            <%= emp.startDate.toLocaleDateString() %>
-                            </span>
+                    <%= emp.startDate.toLocaleDateString() %>
+                      </span>
                         </div>
                         <div class="div_club">
-                            <span>
+                    <span>
                                 <span class="span_style">
                                     Клуб:
                                 </span>
-                                <%= club_name %>
-                            </span>
+                    <%= club_name %>
+                      </span>
                         </div>
                         <div class="div_sport" style="display: inline-block;">
                             <span class="span_style">Виды спорта:</span>
@@ -125,4 +128,5 @@
     });
 </script>
 </body>
+
 </html>

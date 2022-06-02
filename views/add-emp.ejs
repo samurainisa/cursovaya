@@ -2,26 +2,26 @@
 <html lang="en">
 <%- include('./partials/head.ejs') %>
 
-<body>
-<%- include('./partials/nav.ejs') %>
-<form id="post-form" method="post" action="/add-emp">
-    <div class="hui">
-    <div class="form-info">
-        <label>Клуб
+  <body>
+    <%- include('./partials/nav.ejs') %>
+      <form id="post-form" method="post" action="/add-emp">
+        <div class="wrap">
+          <div class="form-info">
+            <label>Клуб
             <input type="text" name="club_name" required/>
             Дата основания клуба
             <input type="ISODate" id="start" name="date_start" value="2022-05-05" required>
         </label>
-        <label>Фамилия
+            <label>Фамилия
             <input type="text" name="lastName" required/>
         </label>
-        <label>Имя
+            <label>Имя
             <input type="text" name="firstName" required/>
         </label>
-        <label>Спорт
+            <label>Спорт
             <input type="text" name="sport_name" required/>
         </label>
-        <label>Разряд
+            <label>Разряд
             <select name="category" id="">
                 <option value="Третий юношеский спортивный разряд">Третий юношеский спортивный разряд</option>
                 <option value="Второй юношеский спортивный разряд">Второй юношеский спортивный разряд</option>
@@ -32,21 +32,21 @@
                 <option value="КМС">КМС</option>
             </select>
         </label>
-        <label for="start">Дата рождения</label>
-        <input type="ISODate" id="start" name="data_roj" value="2022-05-05" required>
-        <label>Тренер
+            <label for="start">Дата рождения</label>
+            <input type="ISODate" id="start" name="data_roj" value="2022-05-05" required>
+            <label>Тренер
             Имя
             <input type="text" name="nameOne" required/>
             Фамилия
             <input type="text" name="secondName" required/>
         </label>
-        <label for="start">Дата рождения тренера</label>
-        <input type="ISODate" id="start" name="trenStartDate" value="2022-05-05" required>
-        <label>Вид спорта тренера
+            <label for="start">Дата рождения тренера</label>
+            <input type="ISODate" id="start" name="trenStartDate" value="2022-05-05" required>
+            <label>Вид спорта тренера
             <input type="text" name="sportTren" required/>
         </label>
-    </div>
-        <div class="build-info">
+          </div>
+          <div class="build-info">
             <label>Здание:
                 <input type="text" name="name" required/>
             </label>
@@ -69,17 +69,18 @@
                 <input type="text" name="winPlace" required/>
             </label>
             <div class="div_orgs" style="display: block">
-                <label>Организации:
+              <label>Организации:
                     <span>
                 <input id="winPlace" type="text" name="orgs_name" required/>
                 <span style="max-width: fit-content;max-height: fit-content;" id="add" onclick="addTextBox()" class="add">+</span></span>
                 </label>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="form-button">
-        <input type="submit" value="Отправить"/>
-    </div>
-</form>
-</body>
+        <div class="form-button">
+          <input type="submit" value="Отправить" />
+        </div>
+      </form>
+  </body>
+
 </html>

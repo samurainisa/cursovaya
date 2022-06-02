@@ -1,112 +1,113 @@
 <!doctype html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-<body>
-<%- include('./partials/nav.ejs') %>
 
-<div class="container">
-    <h1>
-        Данные о спортсмене
-    </h1>
-    <ul>
-        <% if (sportss.length !== 0) { %>
-            <% console.log(sportss) %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+
+      <div class="container">
+        <h1>
+          Данные о спортсмене
+        </h1>
+        <ul>
+          <% if (sportss.length !== 0) { %>
             <% sportss.forEach(({_id, club_name, emps}) => { %>
-                <div class="name_container">
-                    <li>
-                        <div class="div_date">
-                            <span>
+              <div class="name_container">
+                <li>
+                  <div class="div_date">
+                    <span>
                                 <span class="span_style">
                                     ID:
                                 </span>
-                                              <%= _id %>
-                                </span>
-                        </div>
-                        <div class="div_name">
-                            <% emps.forEach((emp => { %>
-                                <span>
+                    <%= _id %>
+                      </span>
+                  </div>
+                  <div class="div_name">
+                    <% emps.forEach((emp => { %>
+                      <span>
                                     <span class="span_style">
                                         Имя :
                                     </span>
-                                    <span><%= emp.firstName %></span>
-                                    <span><%= emp.lastName %></span>
-                                </span>
-                        </div>
-                        <div class="div_date">
-                            <span>
+                      <span><%= emp.firstName %></span>
+                      <span><%= emp.lastName %></span>
+                      </span>
+                  </div>
+                  <div class="div_date">
+                    <span>
                                 <span class="span_style">
                                     Дата рождения:
                                 </span>
-                                            <%= emp.startDate.toLocaleDateString() %>
-                            </span>
-                        </div>
-                        <div class="div_club">
-                            <span>
+                    <%= emp.startDate.toLocaleDateString() %>
+                      </span>
+                  </div>
+                  <div class="div_club">
+                    <span>
                                 <span class="span_style">
                                     Клуб:
                                 </span>
-                                <%= club_name %>
-                            </span>
-                        </div>
-                        <div class="div_sport" style="display: inline-block;">
-                            <span class="span_style">Виды спорта:</span>
-                            <p style="margin: 0">
-                                <% emp.sport.forEach((sport => { %>
-                                    <%= sport.name %>
-                                <% })) %>
-                            </p>
-                        </div>
-                        <div class="div_category">
-                            <span class="span_style">Разряды:</span>
-                            <% emp.sport.forEach((sport => { %>
-                                <%= sport.category %>
+                    <%= club_name %>
+                      </span>
+                  </div>
+                  <div class="div_sport" style="display: inline-block;">
+                    <span class="span_style">Виды спорта:</span>
+                    <p style="margin: 0">
+                      <% emp.sport.forEach((sport => { %>
+                        <%= sport.name %>
+                          <% })) %>
+                    </p>
+                  </div>
+                  <div class="div_category">
+                    <span class="span_style">Разряды:</span>
+                    <% emp.sport.forEach((sport => { %>
+                      <%= sport.category %>
+                        <% })) %>
+                  </div>
+                </li>
+                <li style="padding-right: 30px;">
+                  <p class="title-data">Данные о тренере</p>
+                  <div class="div_trens" style="display: flex;">
+                    <span class="span_style">Имя:</span>
+                    <p style="margin: 0;">
+                      <% emp.tren.forEach((tren => { %>
+                        <%= tren.nameOne %>
+                          <%= tren.secondName %>
                             <% })) %>
-                        </div>
-                    </li>
-                    <li style="padding-right: 30px;">
-                        <p class="title-data">Данные о тренере</p>
-                        <div class="div_trens" style="display: flex;">
-                            <span class="span_style">Имя:</span>
-                            <p style="margin: 0;">
-                                <% emp.tren.forEach((tren => { %>
-                                    <%= tren.nameOne %>
-                                    <%= tren.secondName %>
-                                <% })) %>
-                            </p>
-                        </div>
-                        <div class="div_trens" style="display: flex;">
-                            <span class="span_style">Дата рождения:</span>
-                            <span>
+                    </p>
+                  </div>
+                  <div class="div_trens" style="display: flex;">
+                    <span class="span_style">Дата рождения:</span>
+                    <span>
                                 <% emp.tren.forEach((tren => { %>
                                     <%= tren.startDate.toLocaleDateString() %>
                                 <% })) %>
                             </span>
-                        </div>
-                        <div class="div_trens" style="display: flex;">
-                            <span class="span_style">Спорт:</span>
-                            <span>
+                  </div>
+                  <div class="div_trens" style="display: flex;">
+                    <span class="span_style">Спорт:</span>
+                    <span>
                                 <% emp.tren.forEach((tren => { %>
                                     <%= tren.sportTren %>
                                 <% })) %>
                             </span>
-                        </div>
-                        <div class="div_trens" style="display: flex;">
-                            <span class="span_style">Зарплата:</span>
-                            <span>
+                  </div>
+                  <div class="div_trens" style="display: flex;">
+                    <span class="span_style">Зарплата:</span>
+                    <span>
                                 <% emp.tren.forEach((tren => { %>
                                     <%= tren.salary %>
                                 <% })) %>
                             </span>
-                        </div>
-                    </li>
-                    <a href="/edit-emp/<%= _id %>" class="btn-edit">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </div>
-                <% })) %>
-            <% }) %>
-        <% } %>
-    </ul>
-</div>
-</body>
+                  </div>
+                </li>
+                <a href="/edit-emp/<%= _id %>" class="btn-edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+              <% })) %>
+                <% }) %>
+                  <% } %>
+        </ul>
+      </div>
+  </body>
+
 </html>
